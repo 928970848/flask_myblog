@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{%block title%}
+首页
+{% endblock %}
+
+{% block content %}
+<style>
+    .btn{
+        text-align: left;
+    }
+</style>
+<div class="container-xl">
+{% for article in articles %}
+<div class="card mt-4" style="background-color: #ecf2f9">
+    <div class="card-header">
+        <ul class="nav">
+            <li class="nav-item me-auto">
+                <a class="btn fs-5 fw-bold" href="article/{{ article.id }}">{{ article.title }}</a>
+            </li>
+            {% if current_user.is_authenticated %}
+            <li class="nav-item px-1">
+                <small class="text-body-secondary">
+                    <a class="btn" href="/edit_article/{{ article.id }}">编辑</a>
+                    <!-- Button trigger modal -->
+                    <a class="btn" href="/edit_article/{{ article.id }}" data-bs-toggle="modal" data-bs-target="#Model-DeleteConfirm-{{article.id}}" >删除</a>
+                    <!-- Modal -->
+                    {% include 'includes/delete_article.html' %}
+                </small>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            <a class="btn fs-6" href="article/{{ article.id }}">{{ article.short_content }}</a></p>
+        <ul class="nav">
+            <li class="nav-item ms-auto">
+                <small class="text-body-secondary">发布时间:{{ article.create_time }}</small>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

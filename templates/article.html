@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{%block title%}
+{{article.title}}
+{% endblock %}
+
+{% block content %}
+<textarea id="article_content" style="display:none">{{article.content}}</textarea>
+<div class="container-xl">
+    <h4><p class="text-center" style="margin-top: 20px">{{article.title}}</p></h4>
+    <p class="text-center" style="margin-top:10px">最后更新:{{article.update_time}}</p>
+    <p id="article_viewer"></p>
+    <!--  非markdown文本使用  -->
+    <!--<textarea style="width:100%;height: 628px;resize:none;overflow: hidden;class: aritcle_text;border: none;" ></textarea> -->
+    <!-- var article_height = document.getElementById("article_text")    -->
+    <!--  article_height.height = article_height.scrollHeight   -->
+</div>
+<script src="/assets/js/article.js"></script>
+{% endblock %}
