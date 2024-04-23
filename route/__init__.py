@@ -26,7 +26,7 @@ db = SQLAlchemy(app)
 app.config['SECRET_KEY'] = 'J221jkl3432hJ3N23HK'
 csrf = CSRFProtect(app)  # 创建csrf_token令牌
 login_manager = LoginManager(app)
-# tt
+
 from route import user_routes
 from route import admin_routes
 
