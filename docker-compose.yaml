@@ -17,13 +17,13 @@ services:
       - /home/myblog_data:/opt/myblog/data
     depends_on:
       mysql_server:
-        condition: service_healtht
+        condition: service_healthy
 
   mysql_server:
     image: mysql:8.0
     container_name: mysql_server
     volumes:
-      - /home/mysql:/var/lib/mysql
+      - /home/mys ql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: myblog
